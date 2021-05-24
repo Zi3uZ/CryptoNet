@@ -1,0 +1,48 @@
+
+.info-wrapper{
+  display: flex;
+  padding: 30px 0;
+  width: 100%;
+  img{
+    width: 40%;
+    max-height: 300px;
+    object-fit: contain;
+  }
+
+  .col-50{
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .description{
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      .description-wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+        width: 50%;
+        h1,p{
+          width: 100%;
+        }
+      }
+    }
+  }
+
+}
+.col-100{
+  width: 100%;
+}
+
+@media screen and (max-width: 1024px){
+  .info-wrapper{
+    flex-wrap: wrap;
+
+    .col-50{
+      width: 100%;
+      padding: 30px 0;
+    }
+  }
+
+}

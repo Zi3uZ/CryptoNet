@@ -1,0 +1,28 @@
+<div class="container">
+  <app-loaded-spinner *ngIf="loading; else showComponent"></app-loaded-spinner>
+  <ng-template #showComponent>
+    <div class="info-wrapper" *ngFor="let item of cryptoDetail">
+      <div class="col-50">
+        <img src='{{item.logo_url}}' alt='{{item.name}}'>
+        <div class="description">
+          <div class="description-wrapper">
+            <h1>{{item.name}}</h1>
+            <p><b>Price:</b> {{item.price|currency :'$':'symbol':'1.2-8'}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-50">
+        <div class="description-wrapper">
+          <p><b>Market Cap Rank:</b> {{item.rank}}</p>
+          <p><b>Market Cap:</b> {{item.market_cap|currency :'$':'symbol':'1.2-8'}}</p>
+          <p><b>Matker Cap Change:</b> {{item["1d"].market_cap_change | currency :'$':'symbol':'1.2-8'}}</p>
+          <p><b>Volume:</b> {{item["1d"].volume | currency :'$':'symbol':'1.2-8'}}</p>
+          <p><b>Price change:</b> {{item["1d"].price_change | currency :'$':'symbol':'1.2-8'}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-100">
+      <app-crypto-chart [oneDayChange]="oneDayChange" [sevenDayChange]="sevenDayChange" [yearChange]="oneYearChange"></app-crypto-chart>
+    </div>
+  </ng-template>
+</div>

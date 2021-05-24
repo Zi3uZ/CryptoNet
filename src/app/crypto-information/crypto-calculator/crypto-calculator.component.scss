@@ -1,0 +1,48 @@
+.form-wrapper{
+  background: #2f3640;
+  padding: 40px;
+  max-width: 50%;
+  border-radius: 20px;
+  margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+
+  @media screen and (max-width: 767px){
+    max-width: 100%;
+    padding: 20px;
+  }
+}
+form{
+  text-align: center;
+}
+.button-container{
+  button{
+    margin: 10px;
+  }
+}
+button, input, select{
+  background: #f3f3f3;
+  color: #2f3640;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  &:disabled{
+    background: lightgrey;
+  }
+}
+
+h1{
+  color: #fff;
+  text-align: center;
+  margin: 0 0 30px 0;
+}
+
+p{
+  color: #fff;
+}
+
+.price{
+  font-size: 28px;
+  font-weight: bold;
+}
+

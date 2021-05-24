@@ -1,0 +1,44 @@
+<div class="container">
+
+  <app-loaded-spinner *ngIf="loading; else showComponent"></app-loaded-spinner>
+  <ng-template #showComponent>
+    <div class="calculator-container">
+      <app-crypto-calculator></app-crypto-calculator>
+    </div>
+    <div class="searchBox">
+      <input [formControl]="search" class="searchInput" type="text" name="" placeholder="Search">
+      <button class="searchButton" href="#">
+        <i class="material-icons">
+          search
+        </i>
+      </button>
+    </div>
+    <div class="table-wrapper">
+      <table class="styled-table">
+        <thead>
+        <tr>
+          <th>Logo</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Market Cap</th>
+          <th>Price Change</th>
+          <th>More Info</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of cryptoList" id='{{item.currency}}'>
+          <td><img src='{{item.logo_url}}' alt='{{item.currency}}'></td>
+          <td>{{item.currency}}</td>
+          <td>{{item.price | currency :'$':'symbol':'1.2-8'}}</td>
+          <td>{{item.market_cap | currency :'$':'symbol':'1.2-8'}}</td>
+          <td>{{item["1d"].price_change | currency :'$':'symbol':'1.2-8'}}</td>
+          <td><a [routerLink]="['/details', item.id]">View more Info</a></td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </ng-template>
+
+
+</div>

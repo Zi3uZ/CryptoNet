@@ -1,0 +1,22 @@
+<div class="form-wrapper">
+  <h1>Crypto Calculator</h1>
+  <form [formGroup]="calculatorForm">
+    <button (click)="switchMode()">{{mode ? 'Convert dollars to cryptocurrencies' : 'Convert cryptocurrencies to dollars'}}</button>
+
+    <p>Choose Crypto from List</p>
+    <select formControlName="cryptoItem">
+      <option [ngValue]="null">Select Crypto</option>
+      <option *ngFor="let item of cryptoList">{{item.name}}</option>
+    </select>
+    <p *ngIf="mode; else dollarToCrypto">Enter the quantity crypto</p>
+    <ng-template #dollarToCrypto><p>Enter the value in dollars</p></ng-template>
+    <input type="number" min="0" formControlName="quantity">
+    <div class="button-container">
+      <button type="button" [disabled]="!calculatorForm.valid" (click)="calculate()">Calculate</button>
+      <button type="reset" [disabled]="!calculatorForm.valid" (click)="clearForm()">Clear</button>
+    </div>
+    <p class="price" *ngIf="price && mode; else cryptoQuantity">{{price | currency:'$'}}</p>
+    <ng-template #cryptoQuantity><p class="price">{{price}}</p></ng-template>
+  </form>
+</div>
+
